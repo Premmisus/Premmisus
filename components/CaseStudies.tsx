@@ -50,7 +50,7 @@ export const CaseStudies: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   return (
-    <section id="work" className="py-32 relative overflow-hidden">
+    <section id="work" className="py-16 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
         <div>
           <h2 className="text-sm font-mono text-accent uppercase tracking-widest mb-4">Proven Results</h2>

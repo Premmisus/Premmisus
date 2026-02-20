@@ -17,7 +17,7 @@ export const Footer: React.FC = () => {
             <p className="text-text-secondary font-mono text-lg mb-8 max-w-md">
               We only work with 5 new partners per quarter to ensure maximum attention and results.
             </p>
-            <Button withArrow className="bg-white text-black text-lg py-6 px-10 border-none hover:bg-accent hover:text-black">
+            <Button withArrow className="bg-accent text-black text-lg py-6 px-10 border-none hover:bg-white hover:text-black">
               Apply for Partnership
             </Button>
           </div>

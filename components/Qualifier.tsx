@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { SectionWrapper } from './SectionWrapper';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Check, AlertCircle } from 'lucide-react';
+import { Check } from 'lucide-react';
 
 interface Question {
   id: number;
@@ -31,7 +31,7 @@ export const Qualifier: React.FC = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [isQualified, setIsQualified] = useState<boolean | null>(null);
 
-  const handleOptionClick = (option: string) => {
+  const handleOptionClick = (_option: string) => {
     if (currentStep < questions.length - 1) {
       setCurrentStep(prev => prev + 1);
     } else {
