@@ -14,11 +14,11 @@ export const Button: React.FC<ButtonProps> = ({
   ...props 
 }) => {
   // Removed solid backgrounds, focusing on borders, glow, and text
-  const baseStyles = "relative font-mono font-bold uppercase tracking-wider text-sm py-4 px-10 transition-all duration-300 flex items-center justify-center gap-2 group overflow-hidden border backdrop-blur-sm";
+  const baseStyles = "relative font-sans font-bold uppercase tracking-wider text-sm py-4 px-10 transition-all duration-300 flex items-center justify-center gap-2 group overflow-hidden border backdrop-blur-sm rounded-xl";
   
   const variants = {
-    // Primary: White border, text, subtle hover fill
-    primary: "border-white/40 text-white hover:border-accent hover:text-accent hover:bg-accent/10 hover:shadow-[0_0_30px_rgba(0,229,255,0.2)]",
+    // Primary: Neon button style
+    primary: "neon-button border-transparent font-bold",
     
     // Secondary: Darker border
     secondary: "border-white/10 text-text-secondary hover:border-white/30 hover:text-white",

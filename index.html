@@ -3,27 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nexus Growth | Scale Without Limits</title>
+    <title>Premmisus | Scale Without Limits</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <script>
       tailwind.config = {
         theme: {
           extend: {
             colors: {
-              background: '#020202', // True Black (Darker)
-              surface: '#121212', // Darker Surface
-              border: '#262626', // Darker Border
-              accent: '#00e5ff', // Cyan Blue
+              background: '#05070A', // Deep Black
+              surface: '#0D1117', // Darker Surface
+              border: '#262626',
+              accent: '#00F0FF', // Cyan
+              'accent-blue': '#0072FF', // Blue
               'text-primary': '#FFFFFF',
               'text-secondary': '#A3A3A3',
             },
             fontFamily: {
-              sans: ['Space Grotesk', 'sans-serif'],
+              sans: ['Inter', 'sans-serif'],
+              body: ['Roboto', 'system-ui', 'sans-serif'],
               mono: ['JetBrains Mono', 'monospace'],
-              lato: ['Lato', 'sans-serif'],
             },
             animation: {
               'blob': 'blob 10s infinite',
@@ -56,6 +57,37 @@
       }
     </script>
     <style>
+      :root {
+        --bg-dark: #05070A;
+        --accent-cyan: #00F0FF;
+        --accent-blue: #0072FF;
+        --card-bg: #0D1117;
+      }
+
+      .hero-glow {
+        background: radial-gradient(circle at 50% -20%, rgba(0, 240, 255, 0.15) 0%, transparent 50%), var(--bg-dark);
+      }
+
+      .neon-button {
+        background-color: var(--accent-cyan);
+        color: var(--bg-dark);
+        box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+        transition: all 0.3s ease;
+        border-radius: 12px;
+      }
+
+      .neon-button:hover {
+        box-shadow: 0 0 30px rgba(0, 240, 255, 0.7);
+        transform: translateY(-2px);
+      }
+
+      .grid-overlay {
+        background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                          linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+        background-size: 40px 40px;
+        background-position: center top;
+      }
+
       /* Hide scrollbar for Chrome, Safari and Opera */
       .no-scrollbar::-webkit-scrollbar {
           display: none;

@@ -67,8 +67,8 @@ export const StarBackground: React.FC = () => {
         }
       `}</style>
 
-      {/* Radial Gradient Background - Much darker now */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,#050a10_0%,#000000_100%)]" />
+      {/* Radial Gradient Background - Deep Black */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,#05070A_0%,#000000_100%)]" />
       
       {/* Subtle overlay to enhance cyan feel without washing out the black */}
       <div className="absolute inset-0 bg-accent/[0.02] mix-blend-screen" />

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { NavItem } from '../types';
+import { Logo } from './Logo';
 
 const navItems: NavItem[] = [
   { label: ' The System', href: '#system' },
@@ -31,8 +32,7 @@ export const Navbar: React.FC = () => {
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         <div className="flex items-center gap-2">
-           <div className="w-8 h-8 bg-accent rounded-sm rotate-45 blur-[1px] opacity-80" />
-           <span className="font-sans font-bold text-xl tracking-tight text-white relative z-10 -ml-5 mix-blend-difference">NEXUS</span>
+           <Logo className="scale-75 origin-left" />
         </div>
 
         {/* Desktop Nav */}
@@ -48,7 +48,7 @@ export const Navbar: React.FC = () => {
           ))}
           <a 
             href="#qualify"
-            className="px-5 py-2 text-xs font-bold font-mono bg-accent text-black hover:bg-white transition-all uppercase tracking-wider"
+            className="neon-button px-5 py-2 text-xs font-bold font-sans uppercase tracking-wider rounded-xl"
           >
             Check Availability
           </a>

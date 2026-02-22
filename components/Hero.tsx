@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from './Button';
 import { Marquee } from './Marquee';
 
@@ -12,24 +12,27 @@ const partners = [
   { name: 'Salesforce', logo: 'https://upload.wikimedia.org/wikipedia/commons/f/f9/Salesforce.com_logo.svg' },
   { name: 'Pipedrive', logo: 'https://upload.wikimedia.org/wikipedia/commons/6/63/Pipedrive_logo.svg' },
   { name: 'OpenAI', logo: 'https://upload.wikimedia.org/wikipedia/commons/4/4d/OpenAI_Logo.svg' },
+  { name: 'GoHighLevel', logo: 'https://logo.clearbit.com/gohighlevel.com' },
+  { name: 'LinkedIn', logo: 'https://upload.wikimedia.org/wikipedia/commons/0/01/LinkedIn_Logo.svg' },
+  { name: 'TikTok', logo: 'https://upload.wikimedia.org/wikipedia/en/a/a9/TikTok_logo.svg' },
 ];
 
 const LogoTicker = () => (
-  <div className="w-full border-y border-white/5 bg-black/20 backdrop-blur-sm py-10 mt-20 relative z-10">
-    <div className="text-center mb-8">
+  <div className="w-full border-y border-white/5 bg-black/20 backdrop-blur-sm py-6 mt-20 relative z-10">
+    <div className="text-center mb-4">
        <span className="text-xs font-mono text-text-secondary uppercase tracking-[0.3em]">
           Powered by Trusted Infrastructure
        </span>
     </div>
     
     <div className="flex w-full overflow-hidden">
-       <Marquee className="[--duration:40s] [--gap:5rem]" pauseOnHover>
+       <Marquee className="[--duration:40s] [--gap:3rem] md:[--gap:5rem]" pauseOnHover>
           {partners.map((partner, idx) => (
              <div key={idx} className="flex items-center justify-center px-4">
                 <img 
                   src={partner.logo} 
                   alt={partner.name} 
-                  className="h-8 md:h-10 w-auto object-contain opacity-30 grayscale transition-all duration-300 hover:grayscale-0 hover:opacity-100 brightness-0 invert"
+                  className="h-6 md:h-8 w-auto object-contain opacity-70 transition-all duration-300 hover:opacity-100"
                 />
              </div>
           ))}
@@ -39,16 +42,24 @@ const LogoTicker = () => (
 );
 
 export const Hero: React.FC = () => {
-  return (
-    <section className="relative min-h-screen flex flex-col justify-center pt-32">
-      
-      {/* Intense Background Glows */}
-      <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden">
-         {/* Large slowly moving accent blobs */}
-        <div className="absolute top-[-20%] left-[-10%] w-[60vw] h-[60vw] bg-accent/10 rounded-full blur-[150px] animate-[pulse_8s_infinite]" />
-        <div className="absolute bottom-[10%] right-[-10%] w-[50vw] h-[50vw] bg-purple-900/20 rounded-full blur-[150px] animate-[pulse_10s_infinite]" />
-      </div>
+  const pairs = [
+    { first: "REVENUE", second: "SYSTEMS." },
+    { first: "PREDICTABLE", second: "PIPELINES." },
+    { first: "SCALING", second: "ENGINES." }
+  ];
 
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIndex((prev) => (prev + 1) % pairs.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <section className="relative min-h-screen flex flex-col justify-center pt-24 md:pt-32 overflow-hidden">
+      
       <div className="relative z-10 max-w-7xl mx-auto px-6 flex flex-col items-center text-center">
         
         <motion.div
@@ -61,23 +72,41 @@ export const Hero: React.FC = () => {
           <span className="text-xs font-mono text-accent tracking-widest uppercase">Ontario Industrial & Trades Only</span>
         </motion.div>
 
-        <motion.h1 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-5xl md:text-7xl lg:text-9xl font-sans font-bold tracking-tighter text-white leading-[0.9] mb-8 uppercase"
-        >
-          We Engineer <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-300 to-gray-500">Revenue Systems.</span>
-        </motion.h1>
+        <div className="flex flex-col items-center text-center mb-8 w-full">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-sans font-medium tracking-tighter leading-[1.1] uppercase w-full">
+            <span className="text-white block mb-2">WE ENGINEER</span>
+            
+            <div className="relative h-[1.2em] overflow-hidden w-full flex justify-center"> 
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={index}
+                  initial={{ y: "100%", opacity: 0 }}
+                  animate={{ y: "0%", opacity: 1 }}
+                  exit={{ y: "-100%", opacity: 0 }}
+                  transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                  className="flex flex-row justify-center gap-2 md:gap-5 w-full"
+                >
+                  {/* First Word - White */}
+                  <span className="text-white">
+                    {pairs[index].first}
+                  </span>
+                  {/* Second Word - Gradient */}
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-300 to-gray-500">
+                    {pairs[index].second}
+                  </span>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </h1>
+        </div>
 
         <motion.p 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="max-w-2xl text-lg md:text-xl text-text-secondary mb-12 font-mono leading-relaxed"
+          className="max-w-xl text-base md:text-lg text-text-secondary mb-10 font-mono leading-relaxed px-4"
         >
-          Stop relying on word-of-mouth. We build predictable lead acquisition infrastructures for Ontario's <span className="text-white font-bold">HVAC, Construction, and Manufacturing</span> leaders.
+          Predictable lead acquisition for Ontario's <span className="text-white font-bold">HVAC, Construction, and Manufacturing</span> leaders.
         </motion.p>
 
         <motion.div 

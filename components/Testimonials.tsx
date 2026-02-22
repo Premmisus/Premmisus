@@ -57,23 +57,23 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
   return (
     // Removed bg-surface, added transparent glass style
     <figure
-      className="relative w-80 cursor-pointer overflow-hidden rounded-sm border border-white/10 bg-black/20 backdrop-blur-sm p-6 transition-all duration-300 hover:border-accent/30 hover:bg-white/5"
+      className="relative w-96 cursor-pointer overflow-hidden rounded-sm border border-white/10 bg-black/20 backdrop-blur-sm p-8 transition-all duration-300 hover:border-accent/30 hover:bg-white/5"
     >
-      <div className="flex flex-row items-center gap-2">
-        <img className="rounded-full" width="32" height="32" alt="" src={img} />
+      <div className="flex flex-row items-center gap-3">
+        <img className="rounded-full" width="40" height="40" alt="" src={img} />
         <div className="flex flex-col">
-          <figcaption className="text-sm font-medium font-sans text-white">
+          <figcaption className="text-base font-medium font-sans text-white">
             {name}
           </figcaption>
-          <p className="text-xs font-mono text-text-secondary">{username}</p>
+          <p className="text-sm font-mono text-text-secondary">{username}</p>
         </div>
       </div>
-      <blockquote className="mt-4 text-sm font-mono text-gray-300 leading-relaxed">
+      <blockquote className="mt-6 text-base font-mono text-gray-300 leading-relaxed">
         "{body}"
       </blockquote>
       
       {/* Decorative accent */}
-      <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-accent/5 to-transparent pointer-events-none" />
+      <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-accent/5 to-transparent pointer-events-none" />
     </figure>
   );
 };

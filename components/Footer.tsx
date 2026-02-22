@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from './Button';
+import { Logo } from './Logo';
 
 export const Footer: React.FC = () => {
   return (
@@ -44,11 +45,10 @@ export const Footer: React.FC = () => {
 
         <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/5 gap-4">
           <div className="flex items-center gap-2">
-            <div className="w-4 h-4 bg-accent rounded-sm rotate-45 blur-[1px]" />
-            <span className="font-sans font-bold text-white">NEXUS</span>
+            <Logo className="scale-75 origin-left" />
           </div>
           <p className="font-mono text-xs text-zinc-600">
-            © {new Date().getFullYear()} Nexus Growth. All rights reserved.
+            © {new Date().getFullYear()} Premmisus. All rights reserved.
           </p>
         </div>
       </div>
